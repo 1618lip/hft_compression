@@ -37,14 +37,10 @@ For a message $m = x_1, x_2, \dots, x_n$, the encoding interval is progressively
 
 #### Encoding Steps:
 1. Initialize the interval as $[0, 1)$.
-2. For each symbol $x_i$:
-   - The new interval is given by:
-     $$
-     low = low + (high - low) \cdot C(x_i)
-     $$
-     $$
-     high = low + (high - low) \cdot P(x_i)
-     $$
+2. For each symbol $x_i$: 
+   - The new interval is given by: <br/>
+     $low = low + (high - low) \cdot C(x_i)$ <br/>
+     $high = low + (high - low) \cdot P(x_i)$ <br/>
 3. After encoding all symbols, any number within the final interval $[low, high)$ can be used as the encoded message.
 
 #### Decoding Steps:
@@ -61,22 +57,15 @@ Given a discrete signal $f[n]$, the Haar Wavelet Transform computes two sets of 
 2. **Detail Coefficients** $d[n]$: Represents the difference.
 
 #### Haar Transform Equations:
-For a signal $f = [f_0, f_1, f_2, f_3, \dots]$, the transform at level 1 is computed as:
+For a signal $f = [f_0, f_1, f_2, f_3, \dots]$, the transform at level 1 is computed as:<br/>
 
-$$
-a[i] = \frac{f[2i] + f[2i+1]}{\sqrt{2}}
-$$
-$$
-d[i] = \frac{f[2i] - f[2i+1]}{\sqrt{2}}
-$$
+$a[i] = \frac{f[2i] + f[2i+1]}{\sqrt{2}}$<br/>
+$d[i] = \frac{f[2i] - f[2i+1]}{\sqrt{2}}$<br/>
 
-The inverse transform reconstructs the original signal using:
+The inverse transform reconstructs the original signal using:<br/>
 
-$$
-f[2i] = \frac{a[i] + d[i]}{\sqrt{2}}
-$$
-$$f[2i+1] = \frac{a[i] - d[i]}{\sqrt{2}}
-$$
+$f[2i] = \frac{a[i] + d[i]}{\sqrt{2}}$ <br/>
+$f[2i+1] = \frac{a[i] - d[i]}{\sqrt{2}}$<br/>
 
 The **multi-level wavelet transform** repeatedly applies this operation to the approximation coefficients to further decompose the signal.
 
