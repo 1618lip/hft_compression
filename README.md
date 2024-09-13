@@ -96,8 +96,7 @@ The **multi-level wavelet transform** repeatedly applies this operation to the a
 ├── generate.cpp            # Generate random tick data
 ├── tick_data.csv           # CSV file for tick data (generated)
 ├── important_tick_data.csv # CSV file filtered/denoised tick data
-├── Makefile                # Make file 
-└── requirements.txt        # Python package dependencies
+└──  Makefile                # Make file 
 ```
 
 
@@ -118,7 +117,7 @@ The **multi-level wavelet transform** repeatedly applies this operation to the a
    ```
 
 2. **Compile C++ Code**:
-   Compile the project files (`tick_data.cpp`, `benchmark.cpp`, `generate.cpp`) using the `Makefile`:
+   Compile the project files (`tick_data.cpp`, `benchmark.cpp`, `ae.cpp`, `haar_wavelet.cpp`) using the `Makefile`:
 
    ```bash
    make
@@ -129,7 +128,10 @@ The **multi-level wavelet transform** repeatedly applies this operation to the a
    To generate random tick data, run the `generate` program:
 
    ```bash
-   ./generate <number of tick data you want to generate>
+   g++ -o generate generate.cpp
+   ./generate
+   Enter the number of tick data points to generate: <enter an integer>
+   Random tick data generated in tick_data.csv
    ```
 
    This will create a file called `tick_data.csv` with randomly generated tick data.
@@ -138,6 +140,7 @@ The **multi-level wavelet transform** repeatedly applies this operation to the a
     Once you have `tick_data.csv`, generate the denoised and filtered tick data: 
 
     ```bash
+    g++ -o denoise generate_denoised_tick.cpp haar_wavelet.cpp
     ./denoise 
     ```
 
@@ -153,7 +156,6 @@ The **multi-level wavelet transform** repeatedly applies this operation to the a
 6. **See Filtering Effect:** (Optional):
    To visualize the original vs filtered tick data using Python:
    ```bash
-   pip install -r requirements.txt
    python plot.py
    ```
 
